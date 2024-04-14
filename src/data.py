@@ -9,6 +9,8 @@ def load_data(path: Path | str) -> pd.DataFrame:
     if isinstance(path, str):
         path = Path(path)
 
+    path = path.absolute()
+
     if not path.exists():
         raise RuntimeError(f'Cannot use non-existent path provided: {path}')
 
