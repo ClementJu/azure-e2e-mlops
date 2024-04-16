@@ -2,7 +2,7 @@ from pathlib import Path
 from sklearn.linear_model import LogisticRegression
 
 from data import load_data, split_data
-from train import train_model, export_model
+from train import train_model, export_model, score_model
 
 
 def test_train_model_should_return_trained_model(dataset_directory: Path):
@@ -11,6 +11,15 @@ def test_train_model_should_return_trained_model(dataset_directory: Path):
     trained_model = train_model(reg_rate=0.1, X_train=X_train, y_train=y_train)
     assert isinstance(trained_model, LogisticRegression)
     assert trained_model.C == 1 / 0.1
+
+
+def test_score_model_should_return_model_accuracy(dataset_directory: Path):
+    dataset_df = load_data(path=dataset_directory)
+    X_train, X_test, y_train, y_test = split_data(df=dataset_df)
+    trained_model = train_model(reg_rate=0.1, X_train=X_train, y_train=y_train)
+    test_accuracy = score_model(trained_model=trained_model, X_test=X_test, y_test=y_test)
+    expected_accuracy = trained_model.score(X=X_test, y=y_test)
+    assert test_accuracy == expected_accuracy
 
 
 def test_export_model_should_work(export_directory_path: Path):

@@ -1,0 +1,13 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
+code: "src"
+command: >-
+  python main.py --training_data ${{inputs.training_data}} --reg_rate ${{inputs.reg_rate}}
+inputs:
+  training_data:
+    type: uri_folder
+    path: production/data
+  reg_rate: 0.01
+environment: "azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest"
+compute: "compute-instance-test"
+experiment_name: "diabetes-detection-model"
+description: "Diabetes detection model training version"

@@ -1,11 +1,12 @@
 from pathlib import Path
+from typing import Union
 
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
 
-def load_data(path: Path | str) -> pd.DataFrame:
+def load_data(path: Union[Path, str]) -> pd.DataFrame:
     if isinstance(path, str):
         path = Path(path)
 
