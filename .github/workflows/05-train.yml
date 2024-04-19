@@ -17,9 +17,6 @@ jobs:
       - name: Install Azure ML extension
         run: az extension add --name ml
 
-      - name: Configure Azure
-        run: az configure --defaults group=${{ secrets.AZURE_RG }} workspace=${{ secrets.AZURE_WS }} location=${{ secrets.AZURE_LOCATION }}
-
       - name: Trigger Azure Machine Learning job
         run: |
           az ml job create --file job.yml --resource-group ${{ secrets.AZURE_RG }} --workspace-name ${{ secrets.AZURE_WS }}
