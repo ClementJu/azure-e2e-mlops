@@ -8,6 +8,6 @@ inputs:
     path: production/data
   reg_rate: 0.01
 environment: "azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest"
-compute: "compute-instance-test"
+compute: "cpu-cluster-test"
 experiment_name: "diabetes-detection-model"
 description: "Diabetes detection model training version"
