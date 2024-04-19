@@ -1,0 +1,11 @@
+name: Manually trigger an Azure Machine Learning job
+
+on: [ pull_request ]
+
+jobs:
+  train-model:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Azure Machine Learning job
+        run: |
+          az ml job create --file job.yml
