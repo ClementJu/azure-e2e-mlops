@@ -1,9 +1,6 @@
 name: Train model on development data
 
-on:
-  push:
-    branches:
-      - main
+on: [ pull_request ]
 
 jobs:
   train-model-dev:
