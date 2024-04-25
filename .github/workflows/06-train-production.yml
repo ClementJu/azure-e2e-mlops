@@ -1,4 +1,4 @@
-name: Train model
+name: Train model on production data
 
 on:
   push:
@@ -8,6 +8,7 @@ on:
 jobs:
   train-model:
     runs-on: ubuntu-latest
+    environment: production
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
